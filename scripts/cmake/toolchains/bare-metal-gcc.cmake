@@ -15,11 +15,11 @@
 #  limitations under the License.
 #----------------------------------------------------------------------------
 # specify the cross compiler
-set(TRIPLET                         arm-none-eabi)
+set(TRIPLET                         /Applications/ArmGNUToolchain/14.2.rel1/arm-none-eabi/bin/arm-none-eabi)
 
 set(CMAKE_C_COMPILER                ${TRIPLET}-gcc)
 set(CMAKE_CXX_COMPILER              ${TRIPLET}-g++)
-
+set(CMAKE_CXX_COMPILER_VERSION      14.2)
 set(CMAKE_CROSSCOMPILING            true)
 set(CMAKE_SYSTEM_NAME               Generic)
 
@@ -183,6 +183,6 @@ endfunction()
 # Function to assert the compiler version
 function(enforce_compiler_version)
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS ${MIN_GCC_VERSION})
-        message( FATAL_ERROR "arm-none-eabi-gcc version must be ${MIN_GCC_VERSION} or greater." )
+        message( FATAL_ERROR "arm-none-eabi-gcc version must be ${MIN_GCC_VERSION} or greater. Is ${CMAKE_CXX_COMPILER_VERSION}" )
     endif()
 endfunction()
